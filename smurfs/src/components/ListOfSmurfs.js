@@ -2,24 +2,18 @@ import React, { Component, useEffect } from "react";
 import "./App.css";
 import { getData, FETCH_SMURF_DATA_FAILURE } from "../actions";
 import { connect } from "react-redux";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardImg,
-  CardBody,
-  CardFooter,
-  Button
-} from "shards-react";
-import ListOfSmurfs from "./ListOfSmurfs.js";
-function App(props) {
+import Smurf from "./Smurf.js";
+
+function ListOfSmurfs(props) {
   useEffect(() => {
     props.getData();
   }, []);
-  console.log(props, "props");
+
   return (
-    <div className="App">
-      <ListOfSmurfs />
+    <div className="smurf">
+      {props.smurfs.map(smurf => (
+        <Smurf smurf={smurf} />
+      ))}
     </div>
   );
 }
@@ -33,4 +27,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { getData }
-)(App);
+)(ListOfSmurfs);

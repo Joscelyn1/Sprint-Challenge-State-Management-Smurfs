@@ -23,7 +23,6 @@ function Smurf(props) {
         <p>{props.smurf.age} years old</p>
         <p>{props.smurf.height} tall</p>
       </CardBody>
-      <CardFooter>Card footer</CardFooter>
     </Card>
   );
 }
